@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 /* ============================================================
    TOKENS
@@ -1060,16 +1061,19 @@ footer{border-top:1px solid var(--line);background:var(--ink-1);padding:clamp(56
   background:rgba(5,5,5,.85);
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   display:flex;align-items:center;justify-content:center;
-  padding:24px;
+  padding:20px;
   opacity:0;pointer-events:none;
   transition:opacity .45s var(--ease);
+  overflow-y:auto;
 }
 .modal-overlay.active{opacity:1;pointer-events:auto}
 .modal-card{
   width:100%;max-width:620px;
+  max-height:90vh;
+  overflow-y:auto;
   background:var(--ink-1);
   border:1px solid var(--gold-line);
-  padding:clamp(28px,4vw,44px);
+  padding:clamp(24px,4vw,40px);
   position:relative;
   transform:translateY(24px) scale(.98);
   transition:transform .45s var(--ease);
@@ -1158,7 +1162,7 @@ footer{border-top:1px solid var(--line);background:var(--ink-1);padding:clamp(56
       <a href="#segments">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button class="nav-cta magnet open-mandate-modal" type="button">Let's talk</button>
+    <button class="nav-cta magnet open-mandate-modal" type="button">Partner With Us</button>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>
@@ -1236,10 +1240,12 @@ footer{border-top:1px solid var(--line);background:var(--ink-1);padding:clamp(56
           <span class="s-arw">→</span>
           <span class="s-node">Sales</span>
           <span class="s-arw">→</span>
-          <span class="s-node gold">Growth</span>
-        </div>
       </div>
-    </<!-- ================= 02 PROBLEM ================= -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 PROBLEM ================= -->
 <section id="problem">
   <div class="shell">
     <div class="sec-head">
@@ -1336,7 +1342,6 @@ footer{border-top:1px solid var(--line);background:var(--ink-1);padding:clamp(56
         <article class="step"><span class="step-m"></span><span class="step-n">05</span><h3 class="step-t">Convert</h3><p class="step-d">Manage calls, site visits, negotiations and bookings.</p></article>
         <article class="step"><span class="step-m"></span><span class="step-n">06</span><h3 class="step-t">Optimise</h3><p class="step-d">Track performance and keep improving conversion, month on month.</p></article>
       </div>
-    </div>
     </div>
   </div>
 </section>
@@ -1557,7 +1562,7 @@ footer{border-top:1px solid var(--line);background:var(--ink-1);padding:clamp(56
             <span class="talk-c-icon">✉️</span>
             <div>
               <h4 class="talk-c-label">Write to us</h4>
-              <a href="mailto:mandate@saravest.in" class="talk-c-val talk-link">mandate@saravest.in</a>
+              <a href="mailto:info.saravest@gmail.com" class="talk-c-val talk-link">info.saravest@gmail.com</a>
             </div>
           </div>
 
@@ -1617,16 +1622,15 @@ footer{border-top:1px solid var(--line);background:var(--ink-1);padding:clamp(56
         <p class="f-h">Contact</p>
         <div class="f-list">
           <a href="tel:+918247079331">+91 82470 79331</a>
-          <a href="mailto:mandate@saravest.in">mandate@saravest.in</a>
+          <a href="mailto:info.saravest@gmail.com">info.saravest@gmail.com</a>
           <span>Chennai, Tamil Nadu</span>
-          <a href="#">LinkedIn</a>
           <a href="https://www.instagram.com/filmhaus.studios?igsh=ZGM3Ynl4NnVjcWVw" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
     </div>
     <div class="f-bottom">
       <span>© 2026 Saravest</span>
-      <span>Dashboard figures shown on this site are illustrative</span>
+      <a href="#" id="openAdminBtn" style="color:var(--gold);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;">🔒 Admin Leads Dashboard</a>
     </div>
   </div>
 </footer>
@@ -1639,27 +1643,27 @@ footer{border-top:1px solid var(--line);background:var(--ink-1);padding:clamp(56
     <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">×</button>
     <div id="modalFormContent">
       <span class="modal-eyebrow">Project Sales Mandate</span>
-      <h3 class="modal-title">Discuss Your Project</h3>
+      <h3 class="modal-title">Partner With Us</h3>
       <form class="m-form" id="mandateForm">
         <div class="m-group">
-          <label class="m-label" for="dev_name">Developer / Firm Name *</label>
-          <input class="m-input" type="text" id="dev_name" required placeholder="e.g. Prestige / Assetz Group">
+          <label class="m-label" for="developer_firm_name">Developer / Firm Name *</label>
+          <input class="m-input" type="text" id="developer_firm_name" name="developer_firm_name" required placeholder="e.g. Prestige / Assetz Group">
         </div>
         <div class="m-group">
-          <label class="m-label" for="full_name">Contact Person *</label>
-          <input class="m-input" type="text" id="full_name" required placeholder="Your Name">
+          <label class="m-label" for="contact_person">Contact Person *</label>
+          <input class="m-input" type="text" id="contact_person" name="contact_person" required placeholder="Your Name">
         </div>
         <div class="m-group">
           <label class="m-label" for="phone_number">Phone Number *</label>
-          <input class="m-input" type="tel" id="phone_number" required placeholder="+91 98765 43210">
+          <input class="m-input" type="tel" id="phone_number" name="phone_number" required placeholder="+91 98765 43210">
         </div>
         <div class="m-group">
-          <label class="m-label" for="email">Work Email *</label>
-          <input class="m-input" type="email" id="email" required placeholder="name@firm.com">
+          <label class="m-label" for="work_email">Work Email *</label>
+          <input class="m-input" type="email" id="work_email" name="work_email" required placeholder="name@firm.com">
         </div>
         <div class="m-group">
-          <label class="m-label" for="plot_purpose">Project Category *</label>
-          <select class="m-select" id="plot_purpose" required>
+          <label class="m-label" for="project_category">Project Category *</label>
+          <select class="m-select" id="project_category" name="project_category" required>
             <option value="Villa / Gated Community">Villa / Gated Community Mandate</option>
             <option value="Plot Layout Sales">Plot / Land Layout Mandate</option>
             <option value="Apartment / High-rise">Apartment / High-rise Mandate</option>
@@ -1668,12 +1672,12 @@ footer{border-top:1px solid var(--line);background:var(--ink-1);padding:clamp(56
           </select>
         </div>
         <div class="m-group">
-          <label class="m-label" for="target_location">Project Location &amp; Units *</label>
-          <input class="m-input" type="text" id="target_location" required placeholder="e.g. North Bengaluru, 150 Units">
+          <label class="m-label" for="project_location_units">Project Location &amp; Units *</label>
+          <input class="m-input" type="text" id="project_location_units" name="project_location_units" required placeholder="e.g. North Bengaluru, 150 Units">
         </div>
         <div class="m-group full">
-          <label class="m-label" for="specific_requirements">Mandate Requirements / Message</label>
-          <textarea class="m-textarea" id="specific_requirements" placeholder="Tell us about your project inventory, launch timeline, or sales goals..."></textarea>
+          <label class="m-label" for="mandate_requirements_message">Mandate Requirements / Message</label>
+          <textarea class="m-textarea" id="mandate_requirements_message" name="mandate_requirements_message" placeholder="Tell us about your project inventory, launch timeline, or sales goals..."></textarea>
         </div>
         <button class="btn btn--gold m-submit magnet" type="submit">
           <span>Submit Mandate Inquiry</span>
@@ -1683,8 +1687,8 @@ footer{border-top:1px solid var(--line);background:var(--ink-1);padding:clamp(56
 
     <div class="m-success" id="modalSuccess">
       <div class="m-success-icon">✓</div>
-      <h3 class="m-success-title">Mandate Inquiry Received</h3>
-      <p class="m-success-desc">Thank you for getting in touch. Our managing partners will review your project details and reach out within 24 hours.</p>
+      <h3 class="m-success-title">Thank You!</h3>
+      <p class="m-success-desc">Thank you! Your details have been received and our team will contact you back shortly.</p>
       <button class="btn btn--ghost magnet" id="modalSuccessClose" style="margin-top:24px">
         <span>Close Window</span>
       </button>
@@ -1747,11 +1751,31 @@ footer{border-top:1px solid var(--line);background:var(--ink-1);padding:clamp(56
 
     <div class="m-success" id="callbackSuccess">
       <div class="m-success-icon">✓</div>
-      <h3 class="m-success-title">Callback Scheduled</h3>
-      <p class="m-success-desc">Thank you. Our managing partners have received your request and will call you at your preferred time slot.</p>
+      <h3 class="m-success-title">Thank You!</h3>
+      <p class="m-success-desc">Thank you! Your details have been received and our team will contact you back shortly.</p>
       <button class="btn btn--ghost magnet" id="callbackSuccessClose" style="margin-top:24px">
         <span>Close Window</span>
       </button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ADMIN LEADS DASHBOARD MODAL ================= -->
+<div class="modal-overlay" id="adminModal" aria-hidden="true">
+  <div class="modal-card" style="max-width:980px;">
+    <button class="modal-close" id="adminCloseBtn" aria-label="Close modal">×</button>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+      <div>
+        <span class="modal-eyebrow">Database Inquiries</span>
+        <h3 class="modal-title" style="margin:4px 0 0">Live Submissions Dashboard</h3>
+      </div>
+      <button class="btn btn--gold magnet" id="refreshLeadsBtn" style="padding:8px 16px;font-size:10px;">
+        <span>🔄 Refresh Inquiries</span>
+      </button>
+    </div>
+
+    <div id="adminLeadsTableContainer" style="overflow-x:auto;max-height:60vh;">
+      <p style="color:var(--text-2);font-family:var(--mono);font-size:12px;">Loading inquiries from Supabase...</p>
     </div>
   </div>
 </div>
@@ -2118,41 +2142,100 @@ if(mandateModal){
   });
 }
 
+const SUPABASE_URL = 'https://ozmvemetjpohyirfqyji.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96bXZlbWV0anBvaHlpcmZxeWppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY1MzAyMTAsImV4cCI6MjEwMjEwNjIxMH0.v4PkR9iH0uQFrG-ZqD3TdUB5BDAsNn7XHWJgxTxCAVM';
+
+let supabaseClient = null;
+
+async function sendLeadToSupabase(payload) {
+  if (!supabaseClient && window.supabase && typeof window.supabase.createClient === 'function') {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }
+
+  let inserted = false;
+
+  // 1. Direct Supabase JS Client Insert
+  if (supabaseClient) {
+    try {
+      const { data, error } = await supabaseClient
+        .from('partner_with_us')
+        .insert([payload])
+        .select();
+
+      console.log('[SUPABASE JS CLIENT RESULT]', { data, error });
+      if (!error && data && data.length > 0) inserted = true;
+    } catch (err) {
+      console.warn('[SUPABASE JS CLIENT EXCEPTION]', err);
+    }
+  }
+
+  // 2. Direct REST API Fetch Fallback
+  if (!inserted) {
+    try {
+      const res = await fetch('https://ozmvemetjpohyirfqyji.supabase.co/rest/v1/partner_with_us', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify([payload])
+      });
+      const data = await res.json().catch(() => ([]));
+      console.log('[SUPABASE REST DIRECT RESULT]', data);
+    } catch (e) {
+      console.warn('[SUPABASE REST DIRECT EXCEPTION]', e);
+    }
+  }
+
+  // 3. Vercel Serverless Function / Server Fallback (/api/leads)
+  try {
+    await fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (e) {}
+}
+
 if(mandateForm){
   mandateForm.addEventListener("submit", async function(e){
     e.preventDefault();
-    const devName = document.getElementById("dev_name").value;
-    const fullName = document.getElementById("full_name").value;
-    const phone = document.getElementById("phone_number").value;
-    const email = document.getElementById("email").value;
-    const purpose = document.getElementById("plot_purpose").value;
-    const targetLoc = document.getElementById("target_location").value;
-    const reqs = document.getElementById("specific_requirements").value;
+    const submitBtn = mandateForm.querySelector('button[type="submit"] span');
+    const origText = submitBtn ? submitBtn.textContent : 'Submit Mandate Inquiry';
+    if(submitBtn) submitBtn.textContent = 'Submitting...';
+
+    const developer_firm_name = document.querySelector("#developer_firm_name")?.value?.trim() || "";
+    const contact_person = document.querySelector("#contact_person")?.value?.trim() || "";
+    const phone_number = document.querySelector("#phone_number")?.value?.trim() || "";
+    const work_email = document.querySelector("#work_email")?.value?.trim() || "";
+    const project_category = document.querySelector("#project_category")?.value?.trim() || "";
+    const project_location_units = document.querySelector("#project_location_units")?.value?.trim() || "";
+    const mandate_requirements_message = document.querySelector("#mandate_requirements_message")?.value?.trim() || "";
 
     const payload = {
-      full_name: fullName + (devName ? ` (${devName})` : ''),
-      phone_number: phone,
-      email: email,
-      plot_purpose: purpose,
-      target_location: targetLoc,
-      specific_requirements: reqs
+      developer_firm_name,
+      contact_person,
+      phone_number,
+      work_email,
+      project_category,
+      project_location_units,
+      mandate_requirements_message
     };
 
     try {
-      const res = await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
-      console.log('[MANDATE SUBMISSION]', data);
+      await sendLeadToSupabase(payload);
     } catch(err) {
-      console.warn('[MANDATE SUBMISSION FALLBACK]', err);
+      console.warn('[SUBMIT CAUGHT]', err);
+    } finally {
+      if(submitBtn) submitBtn.textContent = origText;
+      modalFormContent.style.display = "none";
+      modalSuccess.style.display = "block";
+      const modalContainer = mandateModal.querySelector('.modal-card');
+      if(modalContainer) modalContainer.scrollTop = 0;
+      mandateForm.reset();
     }
-
-    modalFormContent.style.display = "none";
-    modalSuccess.style.display = "block";
-    mandateForm.reset();
   });
 }
 
@@ -2166,23 +2249,17 @@ const callbackSuccessClose = document.getElementById("callbackSuccessClose");
 
 function openCallbackModal(){
   if(!callbackModal) return;
+  callbackFormContent.style.display = "block";
+  callbackSuccess.style.display = "none";
   callbackModal.classList.add("active");
-  callbackModal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("is-locked");
 }
 
 function closeCallbackModal(){
   if(!callbackModal) return;
   callbackModal.classList.remove("active");
-  callbackModal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("is-locked");
-  setTimeout(() => {
-    if(callbackFormContent) callbackFormContent.style.display = "block";
-    if(callbackSuccess) callbackSuccess.style.display = "none";
-  }, 450);
 }
 
-document.querySelectorAll(".open-callback-modal").forEach(btn => {
+document.querySelectorAll(".open-callback-modal, .open-callback").forEach(btn => {
   btn.addEventListener("click", e => {
     e.preventDefault();
     openCallbackModal();
@@ -2200,34 +2277,38 @@ if(callbackModal){
 if(callbackForm){
   callbackForm.addEventListener("submit", async function(e){
     e.preventDefault();
-    const name = document.getElementById("cb_name").value;
-    const phone = document.getElementById("cb_phone").value;
-    const time = document.getElementById("cb_time").value;
-    const topic = document.getElementById("cb_topic").value;
-    const notes = document.getElementById("cb_notes").value;
+    const submitBtn = callbackForm.querySelector('button[type="submit"] span');
+    const origText = submitBtn ? submitBtn.textContent : 'Request Priority Callback';
+    if(submitBtn) submitBtn.textContent = 'Submitting...';
+
+    const name = document.querySelector("#cb_name")?.value?.trim() || "";
+    const phone = document.querySelector("#cb_phone")?.value?.trim() || "";
+    const time = document.querySelector("#cb_time")?.value?.trim() || "";
+    const topic = document.querySelector("#cb_topic")?.value?.trim() || "";
+    const notes = document.querySelector("#cb_notes")?.value?.trim() || "";
 
     const payload = {
-      full_name: name + ` [CALLBACK REQUEST: ${time}]`,
+      developer_firm_name: 'Direct Executive Callback',
+      contact_person: name,
       phone_number: phone,
-      plot_purpose: topic,
-      specific_requirements: notes
+      work_email: 'callback@saravest.in',
+      project_category: topic,
+      project_location_units: `Time Slot: ${time}`,
+      mandate_requirements_message: notes || 'Callback requested via Executive line'
     };
 
     try {
-      const res = await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
-      console.log('[CALLBACK SUBMISSION]', data);
+      await sendLeadToSupabase(payload);
     } catch(err) {
-      console.warn('[CALLBACK SUBMISSION FALLBACK]', err);
+      console.warn('[SUBMIT CAUGHT]', err);
+    } finally {
+      if(submitBtn) submitBtn.textContent = origText;
+      callbackFormContent.style.display = "none";
+      callbackSuccess.style.display = "block";
+      const modalContainer = callbackModal.querySelector('.modal-card');
+      if(modalContainer) modalContainer.scrollTop = 0;
+      callbackForm.reset();
     }
-
-    callbackFormContent.style.display = "none";
-    callbackSuccess.style.display = "block";
-    callbackForm.reset();
   });
 }
 })();
