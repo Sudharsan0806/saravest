@@ -1981,3 +1981,162 @@ footer {
   background-color: #0a0a0c !important;
   color: #ffffff !important;
 }
+
+/* ==========================================================================
+   MOBILE & PC ULTIMATE RESPONSIVE OPTIMIZATION SYSTEM
+   ========================================================================== */
+
+/* 1. Global Font Smoothing & Touch Optimizations */
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  touch-action: manipulation;
+}
+
+/* Prevent auto-zoom on iOS Mobile Safari for inputs */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* 2. Responsive Container Padding */
+@media (max-width: 768px) {
+  .wrap {
+    padding: 0 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    padding: 0 16px !important;
+  }
+}
+
+/* 3. Header & Navigation Mobile Optimizations */
+@media (max-width: 900px) {
+  .header-inner {
+    padding: 12px 16px !important;
+  }
+  .nav-links {
+    gap: 14px !important;
+  }
+  .nav-links a {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-links {
+    display: none !important;
+  }
+  .logo-txt {
+    font-size: 18px !important;
+  }
+  .header-cta-btn {
+    padding: 8px 14px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* 4. Hero Section Mobile Responsiveness */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 120px 0 60px 0 !important;
+    min-height: auto !important;
+  }
+  .hero-title {
+    font-size: clamp(28px, 8vw, 42px) !important;
+    line-height: 1.2 !important;
+  }
+  .hero-subtitle {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
+  .hero-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+  .hero-actions button,
+  .hero-actions a {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+  }
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+    margin-top: 32px !important;
+  }
+}
+
+/* 5. Section Grid Layout Adjustments for Mobile & Tablet */
+@media (max-width: 1024px) {
+  .grid-3col,
+  .grid-4col,
+  .services-grid,
+  .process-grid,
+  .founder-card-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+  .gps-inputs-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-3col,
+  .grid-4col,
+  .services-grid,
+  .process-grid,
+  .founder-card-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .map-wrapper {
+    height: 280px !important;
+  }
+}
+
+/* 6. Modal Popups Full Mobile Responsiveness */
+@media (max-width: 768px) {
+  .modal-card,
+  .popup-card {
+    width: 95% !important;
+    max-width: 100% !important;
+    padding: 24px 18px !important;
+    max-height: 85vh !important;
+    border-radius: 12px !important;
+    margin: 10px auto !important;
+  }
+  .modal-header h3,
+  .popup-title {
+    font-size: 20px !important;
+  }
+  .modal-form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+}
+
+/* 7. Large PC Monitor Optimization (1440px - 4K Displays) */
+@media (min-width: 1440px) {
+  .wrap {
+    max-width: 1380px !important;
+  }
+  .hero-title {
+    font-size: 56px !important;
+  }
+  .hero-subtitle {
+    font-size: 19px !important;
+  }
+}
