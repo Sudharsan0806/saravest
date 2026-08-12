@@ -1,0 +1,19 @@
+{
+  "name": "saravest-luxury-realestate",
+  "version": "2.0.0",
+  "description": "Ultra-Premium Real Estate Sales & Marketing Node.js Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "real-estate",
+    "luxury",
+    "nodejs",
+    "investment",
+    "supabase"
+  ],
+  "author": "Saravest",
+  "license": "MIT"
+}
