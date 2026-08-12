@@ -536,8 +536,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // 2. Direct browser REST API call with JWT Anon Key
       if (!supabaseSaved) {
         try {
-          const anonJwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNranRmbmprdm1vZnd1eXNwZnplIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwMjk4NzEsImV4cCI6MjEwMTYwNTg3MX0.-ifVwwccGrR7p2U6oQDB53fP4UFewjJLJhh0oNWJCRE';
-          const sbResponse = await fetch('https://ckjtfnjkvmofwuyspfze.supabase.co/rest/v1/plot_inquiry_leads', {
+          const anonJwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96bXZlbWV0anBvaHlpcmZxeWppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY1MzAyMTAsImV4cCI6MjEwMjEwNjIxMH0.v4PkR9iH0uQFrG-ZqD3TdUB5BDAsNn7XHWJgxTxCAVM';
+          const sbResponse = await fetch('https://ozmvemetjpohyirfqyji.supabase.co/rest/v1/partner_with_us', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
