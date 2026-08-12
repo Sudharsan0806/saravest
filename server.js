@@ -8,8 +8,8 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-const SUPABASE_REST_URL = 'https://heewyxwpvgytooarfpcp.supabase.co/rest/v1/sales_mandate_inquiries';
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhlZXd5eHdwdmd5dG9vYXJmcGNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY0NjU2NjEsImV4cCI6MjEwMjA0MTY2MX0.-RsxFahCNx7Ph3ZHrDq9gDyiqAKn7YwPyKNyJ_X0SOU';
+const SUPABASE_REST_URL = process.env.SUPABASE_REST_URL || 'https://ozmvemetjpohyirfqyji.supabase.co/rest/v1/partner_with_us';
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96bXZlbWV0anBvaHlpcmZxeWppIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NjUzMDIxMCwiZXhwIjoyMTAyMTA6MjEwfQ.cgCCCCOjHyvo36Rw02YEN8ZkV7h2Hca1WVP92J52sas';
 
 function forwardLeadToSupabase(leadObj) {
   try {
@@ -22,9 +22,9 @@ function forwardLeadToSupabase(leadObj) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        'Prefer': 'return=minimal'
+        'apikey': SUPABASE_SERVICE_ROLE_KEY,
+        'Authorization': `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+        'Prefer': 'return=representation'
       }
     };
 
