@@ -2146,11 +2146,15 @@ const SUPABASE_URL = 'https://ozmvemetjpohyirfqyji.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im96bXZlbWV0anBvaHlpcmZxeWppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY1MzAyMTAsImV4cCI6MjEwMjEwNjIxMH0.v4PkR9iH0uQFrG-ZqD3TdUB5BDAsNn7XHWJgxTxCAVM';
 
 let supabaseClient = null;
-if (window.supabase && typeof window.supabase.createClient === 'function') {
-  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-}
 
 async function sendLeadToSupabase(payload) {
+  if (!supabaseClient && window.supabase && typeof window.supabase.createClient === 'function') {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }
+
+  let inserted = false;
+
+  // 1. Direct Supabase JS Client Insert
   if (supabaseClient) {
     try {
       const { data, error } = await supabaseClient
@@ -2158,12 +2162,34 @@ async function sendLeadToSupabase(payload) {
         .insert([payload])
         .select();
 
-      console.log({ data, error });
+      console.log('[SUPABASE JS CLIENT RESULT]', { data, error });
+      if (!error && data && data.length > 0) inserted = true;
     } catch (err) {
       console.warn('[SUPABASE JS CLIENT EXCEPTION]', err);
     }
   }
 
+  // 2. Direct REST API Fetch Fallback
+  if (!inserted) {
+    try {
+      const res = await fetch('https://ozmvemetjpohyirfqyji.supabase.co/rest/v1/partner_with_us', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify([payload])
+      });
+      const data = await res.json().catch(() => ([]));
+      console.log('[SUPABASE REST DIRECT RESULT]', data);
+    } catch (e) {
+      console.warn('[SUPABASE REST DIRECT EXCEPTION]', e);
+    }
+  }
+
+  // 3. Vercel Serverless Function / Server Fallback (/api/leads)
   try {
     await fetch('/api/leads', {
       method: 'POST',
